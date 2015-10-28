@@ -19,9 +19,10 @@ public class Model {
 	private List<ObjectOccurence> ObjectOccurences;
 	private List<RelationshipOccurence> RelationshipOccurences;
 	
-	public Model(String name, List<ObjectOccurence> objectOccurences, List<RelationshipOccurence> relationshipOccurences){
+	public Model(String name, String language, List<ObjectOccurence> objectOccurences, List<RelationshipOccurence> relationshipOccurences){
 		Id = LanguageId = DefaultModelSelection = DiagramTypeId = "dummy";
 		Name = name;
+		Language = language;
 		ObjectOccurences = objectOccurences;
 		RelationshipOccurences = relationshipOccurences;
 		PageWidth = CalculateSheetWidth();

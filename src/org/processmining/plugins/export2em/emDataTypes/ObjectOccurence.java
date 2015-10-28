@@ -12,8 +12,9 @@ public class ObjectOccurence {
 	private int Y_Position;
 	private int Z_Position;
 	
-	public ObjectOccurence(String elementTypeName, String caption, int x, int y, int z){
-		Id = ElementId = ElementTypeId = "dummy";
+	public ObjectOccurence(String id, String elementTypeName, String caption, int x, int y, int z){
+		ElementId = ElementTypeId = "dummy";
+		Id = id;
 		ElementTypeName = elementTypeName;
 		Caption = caption;
 		setX_Position(x);
