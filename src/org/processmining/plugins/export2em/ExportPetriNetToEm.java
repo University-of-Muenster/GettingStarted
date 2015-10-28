@@ -36,7 +36,7 @@ public class ExportPetriNetToEm {
 		HashMap<PetrinetGraph, Marking> markedNets = new HashMap<PetrinetGraph, Marking>();
 		markedNets.put(net, marking);
 		Pnml pnml = new Pnml().convertFromNet(markedNets, layout);
-		pnml.setType(type);
+		//pnml.setType(type);
 		String text = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" + pnml.exportElement(pnml);
 
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
