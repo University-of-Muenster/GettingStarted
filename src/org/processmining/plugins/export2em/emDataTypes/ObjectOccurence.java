@@ -35,6 +35,8 @@ public class ObjectOccurence {
 		Z_Position = x;
 		
 	}
+	
+	public ObjectOccurence(){}
 
 	public int getX_Position() {
 		return X_Position;

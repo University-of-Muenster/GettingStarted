@@ -18,6 +18,8 @@ public class RelationshipOccurence {
 	@XmlAttribute(name="RelationshipType")
 	private String RelationshipType;
 	
+	public RelationshipOccurence(){}
+	
 	public RelationshipOccurence(String relationshipType, String source, String target){
 		Id = ElementId = "dummy";
 		RelationshipType =relationshipType;
