@@ -17,11 +17,11 @@ public class PetrinetConverter extends AbstractConverter {
 		List<RelationshipOccurence> relationshipOccurences = new ArrayList<RelationshipOccurence>();
 		//get ObjectOccurences
 		for (PetrinetNode node : source.getNodes()) {
-			objectOccurences.add(new ObjectOccurence(node.toString(), node.getClass().getTypeName(), node.getLabel(), 0, 0, 0));
+			objectOccurences.add(new ObjectOccurence(node.toString(), node.getClass().getSimpleName(), node.getLabel(), 0, 0, 0));
 		}
 		//get RelationshipOccurences
 		for (PetrinetEdge edge : source.getEdges()) {
-			relationshipOccurences.add(new RelationshipOccurence(edge.getClass().getTypeName(), edge.getSource().toString(), edge.getTarget().toString()));
+			relationshipOccurences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), edge.getSource().toString(), edge.getTarget().toString()));
 		}
 		Model modelToReturn = new Model(source.getLabel(), source.getClass().getTypeName(), objectOccurences, relationshipOccurences); 
 		return modelToReturn;
