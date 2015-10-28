@@ -59,7 +59,9 @@ public class ExportPlugin {
 	        jaxbMarshaller.marshal(emModel, file);
 	        jaxbMarshaller.marshal(emModel, System.out);
 		}
-		catch(Exception e){}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		
 
