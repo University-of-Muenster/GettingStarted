@@ -23,17 +23,25 @@ public class PetrinetConverter extends AbstractConverter {
 		List<RelationshipOccurence> relationshipOccurences = new ArrayList<RelationshipOccurence>();
 		//get ObjectOccurences
 		for (PetrinetNode node : source.getNodes()) {
-			objectOccurences.add(new ObjectOccurence(node.toString(), node.getClass().getSimpleName(), node.getLabel(), getElementCoordinates(node,layout).getX(), getElementCoordinates(node, layout).getY(), 0));
+			objectOccurences.add(new ObjectOccurence(node.getLocalID().toString(), node.getClass().getSimpleName(), node.getLabel(), getElementCoordinates(node,layout).getX(), getElementCoordinates(node, layout).getY(), 0));
+//			objectOccurences.add(new ObjectOccurence(""+node.hashCode(), node.getClass().getSimpleName(), node.getLabel(), getElementCoordinates(node,layout).getX(), getElementCoordinates(node, layout).getY(), 0));
+
 		}
 		//get RelationshipOccurences
 		for (PetrinetEdge edge : source.getEdges()) {
-			relationshipOccurences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), edge.getSource().toString(), edge.getTarget().toString()));
+			//Typecast to of source and target node to PetrinetNode to get ID
+			PetrinetNode sourceNode = (PetrinetNode) edge.getSource();
+			PetrinetNode targetNode = (PetrinetNode) edge.getTarget();
+			relationshipOccurences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), sourceNode.getLocalID().toString(), targetNode.getLocalID().toString()));
+//			relationshipOccurences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), ""+edge.getSource().hashCode(), ""+edge.getTarget().hashCode()));
 		}
-		Model modelToReturn = new Model(source.getLabel(), source.getClass().getTypeName(), objectOccurences, relationshipOccurences); 
+		Model modelToReturn = new Model(source.getLabel(), source.getClass().getSimpleName(), objectOccurences, relationshipOccurences); 
 		return modelToReturn;
 		
 	}
-	
+	/*
+	 * Taken from Petrinet package and adapted to fit to em converter
+	 */
 	private static Point2D getElementCoordinates(AbstractGraphElement element,	GraphLayoutConnection layout) {
 		Point2D result = null;
 		try {
