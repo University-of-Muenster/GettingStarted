@@ -47,7 +47,7 @@ public class ExportPlugin {
 		markedNets.put(net, marking);
 		//Pnml pnml = new Pnml().convertFromNet(markedNets, layout);
 		//pnml.setType(type);
-		Model emModel = PetrinetConverter.convert(net);
+		Model emModel = PetrinetConverter.convert(net,layout);
 		//String text = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" + pnml.exportElement(pnml);
 		try{
 	        JAXBContext jaxbContext = JAXBContext.newInstance(Model.class);
@@ -63,8 +63,6 @@ public class ExportPlugin {
 			e.printStackTrace();
 		}
 		
-		
-
 		
 //		FileWriter writer = new FileWriter(file);
 //		PrintWriter pwriter = new PrintWriter(writer);
