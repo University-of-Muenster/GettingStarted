@@ -11,17 +11,17 @@ public class ModelTester {
     public static void main(String[] args) {
     	
     
-    	ArrayList <ObjectOccurence> objectOccurences = new ArrayList<ObjectOccurence>();
-    	ArrayList <RelationshipOccurence> relationshipOccurences = new ArrayList<RelationshipOccurence>();
+    	ArrayList <ObjectOccurrence> objectOccurences = new ArrayList<ObjectOccurrence>();
+    	ArrayList <RelationshipOccurrence> relationshipOccurences = new ArrayList<RelationshipOccurrence>();
     	
     	//set test variables
     	String name = "TestNet";
     	String language = "Petrinet";
-    	objectOccurences.add(new ObjectOccurence("1", "Place", "Place1", 50,50, 0));
-    	objectOccurences.add(new ObjectOccurence("2", "Place", "Place2", 200,50, 0));
-    	objectOccurences.add(new ObjectOccurence("3", "Transition", "Trans1", 125,50, 0));
-    	relationshipOccurences.add(new RelationshipOccurence("PetriArc", "1", "3"));
-    	relationshipOccurences.add(new RelationshipOccurence("PetriArc", "3", "2"));
+    	objectOccurences.add(new ObjectOccurrence("1", "Place", "Place1", 50,50, 0));
+    	objectOccurences.add(new ObjectOccurrence("2", "Place", "Place2", 200,50, 0));
+    	objectOccurences.add(new ObjectOccurrence("3", "Transition", "Trans1", 125,50, 0));
+    	relationshipOccurences.add(new RelationshipOccurrence("PetriArc", "1", "3"));
+    	relationshipOccurences.add(new RelationshipOccurrence("PetriArc", "3", "2"));
 
     	//get test model
     	Model emModel = new Model(name, language, objectOccurences, relationshipOccurences);

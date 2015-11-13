@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 
 @XmlAccessorType( XmlAccessType.NONE )
-public class ObjectOccurence {
+public class ObjectOccurrence {
 	
 	//attributes
 	@XmlAttribute(name="Id")
@@ -25,7 +25,7 @@ public class ObjectOccurence {
 	@XmlAttribute(name="Z-Position")
 	private double Z_Position;
 	
-	public ObjectOccurence(String id, String elementTypeName, String caption, double x, double y, double z){
+	public ObjectOccurrence(String id, String elementTypeName, String caption, double x, double y, double z){
 		ElementId = ElementTypeId = "dummy";
 		Id = id;
 		ElementTypeName = elementTypeName;
@@ -36,7 +36,7 @@ public class ObjectOccurence {
 		
 	}
 	
-	public ObjectOccurence(){}
+	public ObjectOccurrence(){}
 
 	public double getX_Position() {
 		return X_Position;

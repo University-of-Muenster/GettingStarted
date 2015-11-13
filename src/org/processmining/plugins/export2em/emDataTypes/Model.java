@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement
+@XmlRootElement(name = "Model")
 @XmlAccessorType( XmlAccessType.NONE )
 public class Model {
 	//attributes
@@ -34,40 +34,40 @@ public class Model {
 	private String DiagramTypeId;
 	
 	//elements
-    @XmlElementWrapper(name="ObjectOccurences")
-    @XmlElement(name="ObjectOccurence")
-	private List<ObjectOccurence> ObjectOccurences;
-    @XmlElementWrapper(name="RelationshipOccurences")
-    @XmlElement(name="RelationshipOccurence")
-	private List<RelationshipOccurence> RelationshipOccurences;
+    @XmlElementWrapper(name="ObjectOccurrences")
+    @XmlElement(name="ObjectOccurrence")
+	private List<ObjectOccurrence> ObjectOccurrences;
+    @XmlElementWrapper(name="RelationshipOccurrences")
+    @XmlElement(name="RelationshipOccurrence")
+	private List<RelationshipOccurrence> RelationshipOccurrences;
 	
 	//standard constructor for JAXB
 	public Model(){};
 	
-	public Model(String name, String language, List<ObjectOccurence> objectOccurences, List<RelationshipOccurence> relationshipOccurences){
+	public Model(String name, String language, List<ObjectOccurrence> objectOccurrences, List<RelationshipOccurrence> relationshipOccurrences){
 		Id = LanguageId = DefaultModelSelection = DiagramTypeId = "dummy";
 		Name = name;
 		Language = language;
-		ObjectOccurences = objectOccurences;
-		RelationshipOccurences = relationshipOccurences;
+		ObjectOccurrences = objectOccurrences;
+		RelationshipOccurrences = relationshipOccurrences;
 		PageWidth = CalculateSheetWidth();
 		PageHeight = CalculateSheetHeight();
 	}
 
 	private double CalculateSheetHeight() {
 		double max = 0;
-		for (ObjectOccurence objectOccurence : ObjectOccurences) {
-			if (objectOccurence.getY_Position() > max)
-				max = objectOccurence.getY_Position();
+		for (ObjectOccurrence objectOccurrence : ObjectOccurrences) {
+			if (objectOccurrence.getY_Position() > max)
+				max = objectOccurrence.getY_Position();
 		}
 		return max+100;
 	}
 
 	private double CalculateSheetWidth() {
 		double max = 0;
-		for (ObjectOccurence objectOccurence : ObjectOccurences) {
-			if (objectOccurence.getX_Position() > max)
-				max = objectOccurence.getX_Position();
+		for (ObjectOccurrence objectOccurrence : ObjectOccurrences) {
+			if (objectOccurrence.getX_Position() > max)
+				max = objectOccurrence.getX_Position();
 		}
 		return max+100;
 	}

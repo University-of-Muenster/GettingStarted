@@ -13,18 +13,18 @@ import org.processmining.models.graphbased.directed.petrinet.PetrinetEdge;
 import org.processmining.models.graphbased.directed.petrinet.PetrinetNode;
 import org.processmining.models.graphbased.directed.petrinet.elements.ExpandableSubNet;
 import org.processmining.plugins.export2em.emDataTypes.Model;
-import org.processmining.plugins.export2em.emDataTypes.ObjectOccurence;
-import org.processmining.plugins.export2em.emDataTypes.RelationshipOccurence;
+import org.processmining.plugins.export2em.emDataTypes.ObjectOccurrence;
+import org.processmining.plugins.export2em.emDataTypes.RelationshipOccurrence;
 
 public class PetrinetConverter extends AbstractConverter {
 
 	public static Model convert(Petrinet source, GraphLayoutConnection layout) {
-		List<ObjectOccurence> objectOccurences = new ArrayList<ObjectOccurence>();
-		List<RelationshipOccurence> relationshipOccurences = new ArrayList<RelationshipOccurence>();
+		List<ObjectOccurrence> objectOccurences = new ArrayList<ObjectOccurrence>();
+		List<RelationshipOccurrence> relationshipOccurences = new ArrayList<RelationshipOccurrence>();
 		//get ObjectOccurences
 		for (PetrinetNode node : source.getNodes()) {
 //			objectOccurences.add(new ObjectOccurence(node.getLocalID().toString(), node.getClass().getSimpleName(), node.getLabel(), getElementCoordinates(node,layout).getX(), getElementCoordinates(node, layout).getY(), 0));
-			objectOccurences.add(new ObjectOccurence(""+node.hashCode(), node.getClass().getSimpleName(), node.getLabel(), getElementCoordinates(node,layout).getX(), getElementCoordinates(node, layout).getY(), 0));
+			objectOccurences.add(new ObjectOccurrence(""+node.hashCode(), node.getClass().getSimpleName(), node.getLabel(), getElementCoordinates(node,layout).getX(), getElementCoordinates(node, layout).getY(), 0));
 
 		}
 		//get RelationshipOccurences
@@ -33,7 +33,7 @@ public class PetrinetConverter extends AbstractConverter {
 //			PetrinetNode sourceNode = (PetrinetNode) edge.getSource();
 //			PetrinetNode targetNode = (PetrinetNode) edge.getTarget();
 //			relationshipOccusrences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), sourceNode.getLocalID().toString(), targetNode.getLocalID().toString()));
-			relationshipOccurences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), ""+edge.getSource().hashCode(), ""+edge.getTarget().hashCode()));
+			relationshipOccurences.add(new RelationshipOccurrence(edge.getClass().getSimpleName(), ""+edge.getSource().hashCode(), ""+edge.getTarget().hashCode()));
 		}
 		Model modelToReturn = new Model(source.getLabel(), source.getClass().getSimpleName(), objectOccurences, relationshipOccurences); 
 		return modelToReturn;
