@@ -32,7 +32,7 @@ public class PetrinetConverter extends AbstractConverter {
 			//Typecast to of source and target node to PetrinetNode to get ID
 //			PetrinetNode sourceNode = (PetrinetNode) edge.getSource();
 //			PetrinetNode targetNode = (PetrinetNode) edge.getTarget();
-//			relationshipOccusrences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), sourceNode.getLocalID().toString(), targetNode.getLocalID().toString()));
+//			relationshipOccurences.add(new RelationshipOccurence(edge.getClass().getSimpleName(), sourceNode.getLocalID().toString(), targetNode.getLocalID().toString()));
 			relationshipOccurences.add(new RelationshipOccurrence(edge.getClass().getSimpleName(), ""+edge.getSource().hashCode(), ""+edge.getTarget().hashCode()));
 		}
 		Model modelToReturn = new Model(source.getLabel(), source.getClass().getSimpleName(), objectOccurences, relationshipOccurences); 
@@ -54,8 +54,8 @@ public class PetrinetConverter extends AbstractConverter {
 				pos = new Point2D.Double(10,10);
 			}
 			Dimension size = (Dimension) element.getAttributeMap().get(AttributeMap.SIZE);
-			double x = pos.getX() + size.getWidth() / 2;
-			double y = pos.getY() + size.getHeight() / 2;
+			double x = pos.getX() + size.getWidth(); //testweise ... /2 weggenommen.
+			double y = pos.getY() + size.getHeight(); //s.o.
 			/*
 			 * If this happens to be a sub net, then the current position is the
 			 * position of the rectangular space surrounding it. Correct this
