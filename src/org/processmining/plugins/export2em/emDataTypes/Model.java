@@ -46,7 +46,7 @@ public class Model {
 	
 	public Model(String name, String language, List<ObjectOccurrence> objectOccurrences, List<RelationshipOccurrence> relationshipOccurrences){
 		Id = LanguageId = DefaultModelSelection = DiagramTypeId = "dummy";
-		Name = name;
+		Name = nameCheck(name);
 		Language = language;
 		ObjectOccurrences = objectOccurrences;
 		RelationshipOccurrences = relationshipOccurrences;
@@ -54,6 +54,13 @@ public class Model {
 		PageHeight = CalculateSheetHeight();
 	}
 
+	//In case the petri net has not got a name, a random name is provided to import to em
+	private String nameCheck(String name){
+		if (name != "")
+			return name;
+		else return "random"+Math.round((Math.random()*100000));
+	}
+	
 	private double CalculateSheetHeight() {
 		double max = 0;
 		for (ObjectOccurrence objectOccurrence : ObjectOccurrences) {
@@ -71,8 +78,5 @@ public class Model {
 		}
 		return max+100;
 	}
-	
-	
-	
 
 }
